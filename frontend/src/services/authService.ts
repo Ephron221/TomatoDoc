@@ -1,0 +1,28 @@
+import api from './api';
+
+export const authService = {
+  login: async (credentials: any) => {
+    const response = await api.post('/auth/login', credentials);
+    return response.data;
+  },
+  register: async (userData: any) => {
+    const response = await api.post('/auth/register', userData);
+    return response.data;
+  },
+  verifyOTP: async (data: { email: string; otp: string }) => {
+    const response = await api.post('/auth/verify-otp', data);
+    return response.data;
+  },
+  resendOTP: async (email: string) => {
+    const response = await api.post('/auth/resend-otp', { email });
+    return response.data;
+  },
+  forgotPassword: async (email: string) => {
+    const response = await api.post('/auth/forgot-password', { email });
+    return response.data;
+  },
+  resetPassword: async (data: any) => {
+    const response = await api.post('/auth/reset-password', data);
+    return response.data;
+  }
+};
