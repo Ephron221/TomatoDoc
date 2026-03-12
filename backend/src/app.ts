@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
+import userRoutes from './routes/userRoutes';
 import chatRoutes from './routes/chatRoutes';
 import detectionRoutes from './routes/detectionRoutes';
 import paymentRoutes from './routes/paymentRoutes';
@@ -22,6 +23,7 @@ app.use('/uploads', express.static('uploads'));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/detection', detectionRoutes);
 app.use('/api/payments', paymentRoutes);

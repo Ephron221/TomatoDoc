@@ -9,28 +9,28 @@ const HowItWorks: React.FC = () => {
   const steps = [
     {
       icon: <UserPlus className="w-10 h-10" />,
-      title: "Step 1: Register",
-      description: "Create your account and verify your email via the 6-digit OTP sent to you."
+      title: t('how_it_works.step_1_title'),
+      description: t('how_it_works.step_1_desc')
     },
     {
       icon: <CreditCard className="w-10 h-10" />,
-      title: "Step 2: Choose a Plan",
-      description: "Start with a 15-day free trial or choose a daily, weekly, or monthly plan."
+      title: t('how_it_works.step_2_title'),
+      description: t('how_it_works.step_2_desc')
     },
     {
       icon: <Camera className="w-10 h-10" />,
-      title: "Step 3: Capture/Upload Image",
-      description: "Take a photo of the affected tomato leaf or upload an existing image from your gallery."
+      title: t('how_it_works.step_3_title'),
+      description: t('how_it_works.step_3_desc')
     },
     {
       icon: <MessageCircle className="w-10 h-10" />,
-      title: "Step 4: Get AI Diagnosis",
-      description: "Our AI analyzes the image and provides instant diagnosis, severity, causes, and treatment."
+      title: t('how_it_works.step_4_title'),
+      description: t('how_it_works.step_4_desc')
     },
     {
       icon: <UserCheck className="w-10 h-10" />,
-      title: "Step 5: Connect with Experts",
-      description: "If you need more help, connect directly with agricultural experts via WhatsApp, Email, or Phone."
+      title: t('how_it_works.step_5_title'),
+      description: t('how_it_works.step_5_desc')
     }
   ];
 
@@ -38,9 +38,9 @@ const HowItWorks: React.FC = () => {
     <div className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">How TomatoDoc Works</h1>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{t('how_it_works.title')}</h1>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-            A simple 5-step process to protect your tomato crops using advanced AI technology.
+            {t('how_it_works.subtitle')}
           </p>
         </div>
 

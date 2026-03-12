@@ -5,23 +5,14 @@ import random
 
 # Try to import heavy ML libraries, but don't crash if they are missing
 try:
-    import tensorflow as tf
-    import cv2
-    HAS_ML_LIBS = True
+    # Optional: import tensorflow as tf
+    # Optional: import cv2
+    HAS_ML_LIBS = False
 except ImportError:
     HAS_ML_LIBS = False
     print("Warning: TensorFlow or OpenCV not found. Running in Mock Mode.")
 
 def predict(image_path):
-    # If libraries are available, we could do real preprocessing here
-    if HAS_ML_LIBS:
-        try:
-            img = cv2.imread(image_path)
-            img = cv2.resize(img, (224, 224))
-            # Real prediction logic would go here
-        except Exception as e:
-            print(f"Preprocessing error: {e}")
-
     # Mock classes for Rwandan Tomato Diseases
     classes = [
         "Bacterial Spot", "Early Blight", "Late Blight", "Leaf Mold",

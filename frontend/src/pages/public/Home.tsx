@@ -2,246 +2,284 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { 
-  ShieldCheck, 
   MessageSquare, 
-  Users, 
-  Globe, 
   ArrowRight, 
-  CheckCircle2, 
   Play,
-  Star,
-  Quote
+  TrendingUp,
+  Zap,
+  Phone,
+  Smartphone,
+  Sparkles,
+  ShieldCheck,
+  Globe
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
 
-  const testimonials = [
-    {
-      name: "Jean Bosco Niyomugabo",
-      location: "Musanze, Rwanda",
-      text: "TomatoDoc saved my harvest this year. I detected Early Blight two weeks before it would have destroyed everything.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-      name: "Marie Claire Uwimana",
-      location: "Bugesera, Rwanda",
-      text: "The Kinyarwanda support makes it so easy to use. I can finally get expert advice without needing a translator.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
-    },
-    {
-      name: "Emmanuel Twagirimana",
-      location: "Kayonza, Rwanda",
-      text: "As a commercial farmer, the subscription is worth every penny. The accuracy of the AI is truly impressive.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
     }
-  ];
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1 }
+  };
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative min-h-[700px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1592841608277-73d97f339669?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-            alt="Tomato Farm" 
-            className="w-full h-full object-cover brightness-[0.4]"
-          />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white py-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center space-x-2 bg-secondary/20 backdrop-blur-md border border-secondary/30 px-4 py-2 rounded-full mb-8">
-              <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary-light">Trusted by 500+ Farmers in Rwanda</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight">
-              Protect Your <span className="text-secondary">Tomatoes</span> With Smart AI.
-            </h1>
-            
-            <p className="text-xl md:text-2xl mb-12 text-gray-300 leading-relaxed font-medium">
-              Join the future of farming. Detect diseases instantly, chat with AI experts, and maximize your yield in Kinyarwanda & English.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link to="/register" className="btn-primary text-lg px-10 py-5 group shadow-2xl shadow-red-500/20">
-                {t('home.get_started')}
-                <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/how-it-works" className="flex items-center justify-center space-x-3 text-white font-bold text-lg hover:text-secondary transition group">
-                <div className="w-14 h-14 rounded-full border-2 border-white/30 flex items-center justify-center group-hover:border-secondary transition">
-                  <Play className="w-5 h-5 fill-current" />
+      {/* Modern Hero Section with Vibrant Background */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#fafafa]">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-green-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03] pointer-events-none" 
+             style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center space-x-3 bg-white border border-gray-100 px-4 py-2 rounded-2xl shadow-sm mb-8"
+              >
+                <div className="flex -space-x-2">
+                   {[1,2,3].map(i => (
+                     <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-gray-200 overflow-hidden">
+                       <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="" />
+                     </div>
+                   ))}
                 </div>
-                <span>{t('home.learn_more')}</span>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Floating cards decoration for desktop */}
-        <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none">
-           <motion.div 
-             animate={{ y: [0, -20, 0] }}
-             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-             className="absolute top-0 right-10 bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-2xl w-64"
-           >
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-white">
-                  <CheckCircle2 className="w-6 h-6" />
-                </div>
-                <span className="text-white font-bold text-sm">98% Accuracy</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{t('home.trusted_by')}</span>
+              </motion.div>
+              
+              <h1 className="text-6xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tight text-gray-900">
+                {t('home.hero_title_1')} <br />
+                <span className="text-secondary italic">{t('home.hero_title_2')}</span> <br />
+                {t('home.hero_title_3')}
+              </h1>
+              
+              <p className="text-xl md:text-2xl mb-12 text-gray-500 leading-relaxed font-medium max-w-xl">
+                {t('home.hero_subtitle')}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 items-center">
+                <Link to="/register" className="w-full sm:w-auto bg-secondary text-white font-black uppercase tracking-[0.15em] text-xs px-12 py-6 rounded-[2rem] hover:bg-red-600 transition-all shadow-2xl shadow-red-200 flex items-center justify-center group">
+                  {t('home.get_started')}
+                  <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to="/how-it-works" className="w-full sm:w-auto flex items-center justify-center space-x-4 px-8 py-6 rounded-[2rem] border border-gray-100 bg-white hover:bg-gray-50 transition-colors shadow-sm group">
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                    <Play className="w-3 h-3 fill-current" />
+                  </div>
+                  <span className="text-xs font-black uppercase tracking-widest text-gray-900">{t('home.how_it_works_btn')}</span>
+                </Link>
               </div>
-              <div className="h-2 bg-white/20 rounded-full w-full mb-2">
-                <div className="h-full bg-secondary w-[98%] rounded-full"></div>
-              </div>
-           </motion.div>
-
-           <motion.div 
-             animate={{ y: [0, 20, 0] }}
-             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-             className="absolute bottom-10 left-0 bg-white p-6 rounded-3xl shadow-2xl w-72"
-           >
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-green-600">
-                  <Globe className="w-6 h-6" />
-                </div>
-                <span className="text-gray-900 font-bold text-sm">Now in Kinyarwanda</span>
-              </div>
-              <p className="text-gray-500 text-xs leading-relaxed">Ibisubizo byihuse mu rurimi rwawe rw'amavuko.</p>
-           </motion.div>
-        </div>
-      </section>
-
-      {/* Stats Strip */}
-      <section className="bg-white py-12 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-black text-gray-900 mb-1">500+</div>
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">Farmers Active</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-black text-secondary mb-1">12k+</div>
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">Plants Diagnosed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-black text-gray-900 mb-1">98%</div>
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">AI Accuracy</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-black text-gray-900 mb-1">24/7</div>
-              <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">System Uptime</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-24 bg-gray-50 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">{t('home.features')}</h2>
-            <div className="w-20 h-2 bg-secondary mx-auto rounded-full mb-8"></div>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">
-              Combining world-class computer vision with local agricultural expertise.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <motion.div whileHover={{ y: -10 }} className="card p-10 group bg-white border-b-8 border-b-secondary">
-              <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-secondary mb-8 group-hover:bg-secondary group-hover:text-white transition-all duration-500 shadow-xl shadow-red-100">
-                <ShieldCheck className="w-8 h-8" />
-              </div>
-              <h3 className="text-2xl font-black mb-4 text-gray-900">{t('home.ai_detection')}</h3>
-              <p className="text-gray-500 leading-relaxed font-medium">{t('home.ai_detection_desc')}</p>
             </motion.div>
 
-            <motion.div whileHover={{ y: -10 }} className="card p-10 group bg-white border-b-8 border-b-gray-900">
-              <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-gray-900 mb-8 group-hover:bg-gray-900 group-hover:text-white transition-all duration-500 shadow-xl shadow-gray-200">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="relative"
+            >
+               <div className="relative z-10 bg-white p-4 rounded-[3rem] shadow-2xl shadow-gray-200 border border-gray-100">
+                  <img 
+                    src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e17?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Tomato Disease Detection" 
+                    className="rounded-[2.5rem] w-full aspect-[4/5] object-cover"
+                  />
+                  
+                  {/* Floating AI Analysis Card */}
+                  <motion.div 
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -right-8 top-1/4 bg-white/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/50 w-64 hidden sm:block"
+                  >
+                     <div className="flex items-center space-x-3 mb-4">
+                        <div className="w-10 h-10 bg-secondary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-red-100">
+                           <Zap className="w-5 h-5" />
+                        </div>
+                        <div>
+                           <p className="text-[10px] font-black uppercase text-gray-400">{t('home.ai_diagnosis')}</p>
+                           <p className="text-sm font-black text-gray-900">{t('home.late_blight')}</p>
+                        </div>
+                     </div>
+                     <div className="space-y-2">
+                        <div className="flex justify-between text-[10px] font-bold">
+                           <span>{t('home.confidence')}</span>
+                           <span className="text-secondary">98.4%</span>
+                        </div>
+                        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                           <div className="h-full bg-secondary w-[98.4%]"></div>
+                        </div>
+                     </div>
+                  </motion.div>
+
+                  {/* Floating Rwandan Support Card */}
+                  <motion.div 
+                    animate={{ y: [0, 15, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute -left-8 bottom-1/4 bg-gray-900 p-6 rounded-3xl shadow-2xl w-64 hidden sm:block"
+                  >
+                     <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-green-500 rounded-2xl flex items-center justify-center text-white">
+                           <Globe className="w-5 h-5" />
+                        </div>
+                        <div>
+                           <p className="text-[10px] font-black uppercase text-gray-500 tracking-widest">{t('home.local_support')}</p>
+                           <p className="text-sm font-black text-white">{t('home.kinyarwanda_support')}</p>
+                        </div>
+                     </div>
+                  </motion.div>
+               </div>
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-gray-100 rounded-full -z-10" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modern Features Section */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-12">
+            <div className="max-w-2xl">
+               <span className="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-4 block">{t('home.platform_excellence')}</span>
+               <h2 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tight leading-none">{t('home.future_title')}</h2>
+            </div>
+            <p className="text-xl text-gray-500 max-w-sm font-medium leading-relaxed">
+              {t('home.future_desc')}
+            </p>
+          </div>
+
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <motion.div variants={item} className="bg-gray-50 p-12 rounded-[3.5rem] hover:bg-red-50 transition-colors group">
+              <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-secondary mb-10 shadow-xl shadow-red-100 group-hover:scale-110 transition-transform">
+                <Smartphone className="w-8 h-8" />
+              </div>
+              <h3 className="text-2xl font-black mb-4 text-gray-900">{t('home.instant_scans')}</h3>
+              <p className="text-gray-500 leading-relaxed font-medium">{t('home.instant_scans_desc')}</p>
+            </motion.div>
+
+            <motion.div variants={item} className="bg-gray-50 p-12 rounded-[3.5rem] hover:bg-gray-900 transition-colors group">
+              <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-gray-900 mb-10 shadow-xl shadow-gray-200 group-hover:scale-110 transition-transform">
                 <MessageSquare className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-black mb-4 text-gray-900">AI Expert Chat</h3>
-              <p className="text-gray-500 leading-relaxed font-medium">Interactive chatbot that answers all your tomato farming questions in English or Kinyarwanda.</p>
+              <h3 className="text-2xl font-black mb-4 text-gray-900 group-hover:text-white">{t('home.ai_chat')}</h3>
+              <p className="text-gray-500 leading-relaxed font-medium group-hover:text-gray-400">{t('home.ai_chat_desc')}</p>
             </motion.div>
 
-            <motion.div whileHover={{ y: -10 }} className="card p-10 group bg-white border-b-8 border-b-green-500">
-              <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-8 group-hover:bg-green-600 group-hover:text-white transition-all duration-500 shadow-xl shadow-green-100">
-                <Users className="w-8 h-8" />
+            <motion.div variants={item} className="bg-gray-50 p-12 rounded-[3.5rem] hover:bg-green-50 transition-colors group">
+              <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-green-600 mb-10 shadow-xl shadow-green-100 group-hover:scale-110 transition-transform">
+                <Sparkles className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-black mb-4 text-gray-900">{t('home.expert_connect')}</h3>
-              <p className="text-gray-500 leading-relaxed font-medium">{t('home.expert_connect_desc')}</p>
+              <h3 className="text-2xl font-black mb-4 text-gray-900">{t('home.yield_opt')}</h3>
+              <p className="text-gray-500 leading-relaxed font-medium">{t('home.yield_opt_desc')}</p>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 -mr-64 -mt-64 w-[500px] h-[500px] bg-red-50 rounded-full opacity-50 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 -ml-64 -mb-64 w-[500px] h-[500px] bg-red-50 rounded-full opacity-50 blur-3xl"></div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-            <div className="max-w-2xl">
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">Voice of Rwandan Farmers</h2>
-              <p className="text-xl text-gray-500 font-medium">Real stories from farmers who have transformed their production with TomatoDoc.</p>
-            </div>
-            <div className="flex space-x-2">
-              {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-6 h-6 fill-secondary text-secondary" />)}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-gray-50 p-10 rounded-[40px] relative overflow-hidden group">
-                <Quote className="absolute -top-4 -right-4 w-24 h-24 text-gray-200 group-hover:text-red-100 transition-colors" />
-                <p className="text-lg text-gray-700 italic mb-8 relative z-10 font-medium">"{t.text}"</p>
-                <div className="flex items-center">
-                  <img src={t.image} alt={t.name} className="w-14 h-14 rounded-2xl object-cover mr-4 shadow-lg" />
-                  <div>
-                    <h4 className="font-black text-gray-900">{t.name}</h4>
-                    <p className="text-xs font-bold text-secondary uppercase tracking-widest">{t.location}</p>
+      {/* Interactive Yield Comparison */}
+      <section className="py-32 bg-gray-50">
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-[4rem] p-8 md:p-20 shadow-2xl shadow-gray-200 border border-gray-100 overflow-hidden relative">
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                  <div className="relative z-10">
+                     <span className="text-green-500 font-black text-[10px] uppercase tracking-[0.3em] mb-4 block">{t('home.proven_results')}</span>
+                     <h2 className="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-[1.1] mb-10">
+                        {t('home.maximize_potential')}
+                     </h2>
+                     <div className="space-y-8">
+                        <div className="flex items-start space-x-6">
+                           <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 shrink-0">
+                              <TrendingUp className="w-6 h-6" />
+                           </div>
+                           <div>
+                              <h4 className="text-lg font-black text-gray-900 mb-1">{t('home.yield_increase')}</h4>
+                              <p className="text-sm text-gray-500 font-medium">{t('home.yield_increase_desc')}</p>
+                           </div>
+                        </div>
+                        <div className="flex items-start space-x-6">
+                           <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-secondary shrink-0">
+                              <ShieldCheck className="w-6 h-6" />
+                           </div>
+                           <div>
+                              <h4 className="text-lg font-black text-gray-900 mb-1">{t('home.zero_waste')}</h4>
+                              <p className="text-sm text-gray-500 font-medium">{t('home.zero_waste_desc')}</p>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+                  
+                  <div className="relative">
+                     <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-4 pt-12">
+                           <div className="bg-gray-50 rounded-[2.5rem] p-6 text-center border border-gray-100">
+                              <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">{t('home.traditional')}</p>
+                              <div className="h-40 w-full bg-gray-200 rounded-2xl mb-4" />
+                              <p className="text-2xl font-black text-gray-400">60%</p>
+                           </div>
+                        </div>
+                        <div className="space-y-4">
+                           <div className="bg-secondary rounded-[2.5rem] p-6 text-center text-white shadow-2xl shadow-red-200">
+                              <p className="text-xs font-black opacity-60 uppercase tracking-widest mb-2">{t('home.with_tomatodoc')}</p>
+                              <div className="h-64 w-full bg-white/20 rounded-2xl mb-4" />
+                              <p className="text-3xl font-black italic">100%</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-24">
+      <section className="py-32">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-900 rounded-[60px] p-10 md:p-20 text-center text-white relative overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)]">
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight">Ready to Boost Your <span className="text-secondary">Harvest?</span></h2>
-              <p className="text-xl md:text-2xl mb-12 text-gray-400 font-medium">Join 500+ Rwandan farmers today. Get 15 days of free AI-powered diagnosis.</p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-secondary via-red-600 to-orange-500 rounded-[4rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-[0_40px_100px_-15px_rgba(255,99,71,0.3)]"
+          >
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-none">{t('home.ready_boost')}</h2>
+              <p className="text-xl md:text-2xl mb-16 text-red-50 font-medium leading-relaxed max-w-2xl mx-auto">
+                {t('home.join_desc')}
+              </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link to="/register" className="btn-primary text-xl px-12 py-5 w-full sm:w-auto shadow-2xl shadow-red-500/20">
-                  Join TomatoDoc Now
+                <Link to="/register" className="w-full sm:w-auto bg-white text-secondary font-black uppercase tracking-[0.2em] text-xs px-12 py-7 rounded-[2.5rem] hover:bg-gray-100 transition-all shadow-2xl shadow-red-900/20">
+                  {t('home.join_now')}
                 </Link>
-                <Link to="/contact" className="text-white font-bold hover:text-secondary transition text-lg underline underline-offset-8 decoration-white/20 hover:decoration-secondary">
-                  Talk to Sales
+                <Link to="/contact" className="w-full sm:w-auto flex items-center justify-center space-x-4 px-10 py-7 rounded-[2.5rem] bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all group">
+                   <Phone className="w-4 h-4" />
+                   <span className="text-xs font-black uppercase tracking-widest">{t('home.talk_sales')}</span>
                 </Link>
               </div>
             </div>
-            
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#FF6347_1px,transparent_1px)] [background-size:40px_40px]"></div>
-            </div>
-            
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-secondary opacity-20 rounded-full blur-[120px]"></div>
-            <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-secondary opacity-10 rounded-full blur-[120px]"></div>
-          </div>
+            <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-white opacity-20 rounded-full blur-[120px]" />
+          </motion.div>
         </div>
       </section>
     </div>
