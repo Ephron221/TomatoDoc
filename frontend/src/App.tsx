@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from 'sonner';
 
@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './components/AdminLayout';
+import FarmerLayout from './components/FarmerLayout';
 
 import Home from './pages/public/Home';
 import HowItWorks from './pages/public/HowItWorks';
@@ -25,6 +26,7 @@ import NewChat from './pages/farmer/NewChat';
 import Experts from './pages/farmer/Experts';
 import PaymentForm from './pages/farmer/PaymentForm';
 import ImageDetection from './pages/farmer/ImageDetection';
+import FarmerProfile from './pages/farmer/FarmerProfile';
 
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminPayments from './pages/admin/AdminPayments';
@@ -42,7 +44,15 @@ const App: React.FC = () => {
         <div className="flex flex-col min-h-screen">
           <Routes>
             {/* Public Routes with Main Layout */}
-            <Route element={<><Navbar /><main className="flex-grow"><Routes>
+            <Route element={
+              <>
+                <Navbar />
+                <main className="flex-grow">
+                  <Outlet />
+                </main>
+                <Footer />
+              </>
+            }>
               <Route path="/" element={<Home />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/about" element={<About />} />
@@ -53,13 +63,11 @@ const App: React.FC = () => {
               <Route path="/verify-otp" element={<VerifyOTP />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-            </Routes></main><Footer /></>}>
-              <Route path="/*" element={null} />
             </Route>
 
-            {/* Farmer Routes with Main Layout */}
+            {/* Farmer Routes with Farmer Layout */}
             <Route element={<ProtectedRoute role="farmer" />}>
-              <Route element={<><Navbar /><main className="flex-grow"><Routes>
+              <Route element={<FarmerLayout />}>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard/chats" element={<ChatHistory />} />
                 <Route path="/dashboard/chat/new" element={<NewChat />} />
@@ -67,8 +75,7 @@ const App: React.FC = () => {
                 <Route path="/dashboard/detect" element={<ImageDetection />} />
                 <Route path="/dashboard/experts" element={<Experts />} />
                 <Route path="/dashboard/payment" element={<PaymentForm />} />
-              </Routes></main><Footer /></>}>
-                <Route path="/dashboard/*" element={null} />
+                <Route path="/profile" element={<FarmerProfile />} />
               </Route>
             </Route>
 

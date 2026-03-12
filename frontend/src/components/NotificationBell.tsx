@@ -34,9 +34,7 @@ const NotificationBell: React.FC = () => {
 
   const fetchNotifications = async () => {
     try {
-      const endpoint = user?.role === 'admin' ? '/admin/notifications' : '/api/notifications/my-notifications';
-      // Note: Need to make sure this user endpoint exists in backend, otherwise it fails.
-      // For now, let's assume it's implemented.
+      const endpoint = user?.role === 'admin' ? '/admin/notifications' : '/notifications/my-notifications';
       const res = await api.get(endpoint);
       setNotifications(res.data);
     } catch (err) {
@@ -48,7 +46,7 @@ const NotificationBell: React.FC = () => {
     try {
       const endpoint = user?.role === 'admin' 
         ? `/admin/notifications/mark-read/${id}` 
-        : `/api/notifications/mark-read/${id}`;
+        : `/notifications/mark-read/${id}`;
       await api.post(endpoint);
       setNotifications(notifications.map(n => n.id === id ? { ...n, is_read: true } : n));
     } catch (err) {

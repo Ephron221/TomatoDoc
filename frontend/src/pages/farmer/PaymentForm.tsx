@@ -27,8 +27,8 @@ const PaymentForm: React.FC = () => {
     full_name: user?.full_name || '',
     email: user?.email || '',
     phone: '',
-    plan: selectedPlanId || '',
-    amount: '',
+    plan: selectedPlanId || 'daily',
+    amount: '1000',
     payment_method: 'mobile_money' as 'mobile_money' | 'bank'
   });
 
@@ -242,47 +242,44 @@ const PaymentForm: React.FC = () => {
         </div>
 
         <div className="lg:col-span-2 space-y-6">
-          <div className="card bg-gray-900 text-white">
-            <h3 className="text-xl font-bold mb-6 flex items-center">
+          <div className="card bg-white border border-gray-100 shadow-xl shadow-gray-200/50">
+            <h3 className="text-xl font-bold mb-8 flex items-center text-gray-900">
               <CreditCard className="w-6 h-6 mr-2 text-secondary" />
-              Payment Instructions
+              Payment Details
             </h3>
             
-            <div className="space-y-8">
+            <div className="space-y-10">
               {formData.payment_method === 'mobile_money' ? (
-                <div>
-                  <h4 className="text-secondary font-bold text-xs uppercase tracking-widest mb-3">MTN / Airtel Money</h4>
-                  <div className="space-y-4">
-                    <div className="bg-white/5 p-4 rounded-xl">
-                      <p className="text-sm text-gray-400 mb-1">MoMo Code / Merchant ID</p>
-                      <p className="text-xl font-mono font-bold">672891</p>
-                    </div>
-                    <div className="bg-white/5 p-4 rounded-xl">
-                      <p className="text-sm text-gray-400 mb-1">Phone Number</p>
-                      <p className="text-xl font-mono font-bold">078 000 0000</p>
-                      <p className="text-xs text-secondary mt-1">Name: TOMATODOC LTD</p>
-                    </div>
+                <div className="space-y-6">
+                  <h4 className="text-secondary font-black text-[10px] uppercase tracking-[0.2em]">MTN / Airtel Money</h4>
+                  
+                  <div>
+                    <p className="text-sm font-bold text-gray-400 mb-2">Phone Number</p>
+                    <p className="text-2xl font-black text-gray-900 tracking-tight">+250 787 846 344</p>
+                    <p className="text-xs font-bold text-secondary mt-2">Registered: Ephron TUYISHIME</p>
                   </div>
                 </div>
               ) : (
-                <div>
-                  <h4 className="text-secondary font-bold text-xs uppercase tracking-widest mb-3">Bank Transfer</h4>
-                  <div className="space-y-4">
-                    <div className="bg-white/5 p-4 rounded-xl">
-                      <p className="text-sm text-gray-400 mb-1">Bank Name</p>
-                      <p className="text-xl font-bold">Bank of Kigali (BK)</p>
+                <div className="space-y-6">
+                  <h4 className="text-secondary font-black text-[10px] uppercase tracking-[0.2em]">Bank Transfer</h4>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-sm font-bold text-gray-400 mb-2">Bank Name</p>
+                      <p className="text-2xl font-black text-gray-900 tracking-tight">Equity Bank</p>
                     </div>
-                    <div className="bg-white/5 p-4 rounded-xl">
-                      <p className="text-sm text-gray-400 mb-1">Account Number</p>
-                      <p className="text-xl font-mono font-bold">00095-0772211-90</p>
-                      <p className="text-xs text-secondary mt-1">Name: TOMATODOC RWANDA</p>
+                    
+                    <div>
+                      <p className="text-sm font-bold text-gray-400 mb-2">Account Number</p>
+                      <p className="text-2xl font-black text-gray-900 tracking-tight font-mono">4009100876268</p>
+                      <p className="text-xs font-bold text-secondary mt-2">Owner: Ephron TUYISHIME</p>
                     </div>
                   </div>
                 </div>
               )}
 
-              <div className="pt-6 border-t border-white/10">
-                <div className="flex items-start space-x-3 text-sm text-gray-400">
+              <div className="pt-8 border-t border-gray-50">
+                <div className="flex items-start space-x-3 text-xs text-gray-500 leading-relaxed">
                   <ShieldCheck className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                   <p>Your payment is secure. We manually verify every transaction to ensure accuracy and prevent fraud.</p>
                 </div>
@@ -290,11 +287,16 @@ const PaymentForm: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-red-50 p-6 rounded-3xl border border-red-100">
-            <h4 className="font-bold text-secondary mb-2">Need Help?</h4>
-            <p className="text-sm text-gray-600 mb-4">If you experience any issues with the payment, contact our finance team.</p>
-            <a href="https://wa.me/250780000000" className="text-secondary font-bold text-sm flex items-center hover:underline">
-              Chat on WhatsApp <ChevronLeft className="w-4 h-4 ml-1 rotate-180" />
+          <div className="bg-red-50/50 p-8 rounded-[2rem] border border-red-100/50">
+            <h4 className="font-black text-gray-900 text-sm mb-2">Need Help?</h4>
+            <p className="text-xs text-gray-500 mb-6 leading-relaxed">If you experience any issues with the payment, contact our finance team.</p>
+            <a 
+              href="https://wa.me/250787846344" 
+              target="_blank" 
+              rel="noreferrer"
+              className="text-secondary font-black text-[10px] uppercase tracking-widest flex items-center hover:translate-x-1 transition-transform"
+            >
+              Chat on WhatsApp <ChevronLeft className="w-3 h-3 ml-2 rotate-180" />
             </a>
           </div>
         </div>
